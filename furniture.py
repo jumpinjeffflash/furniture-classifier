@@ -46,7 +46,7 @@ def import_and_predict(image_data, model):
 
         return prediction 
     
-file = st.file_uploader("Please upload your picture...", type=["png","jpg","jpeg"])
+file = st.file_uploader("Please upload your picture of a chair, coffee table or dresser...", type=["png","jpg","jpeg"])
 
 if file is None:
     st.text("Please upload an image file")
