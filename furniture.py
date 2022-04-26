@@ -30,7 +30,7 @@ with st.expander("Click here for more details about how this model was built"):
         st.write("""EfficientNet-B0 is a State Of The Art (SOTA) model trained on more than a million images from the ImageNet database (a large visual database designed for use in visual object recognition software research). The network can classify images into one thousand different object categories, including furniture. Woot!""")
         st.write("""The model was trained & tested on 1,000+ images (approx. 360 for each of the 3 furniture types).""")
 
-@st.cache
+@st.cache(max_entries=1)
 def import_and_predict(image_data, model):
 
         size = (256,256)
