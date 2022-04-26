@@ -28,7 +28,7 @@ st.markdown("This dashboard takes your image of a chair/coffee table/dresser and
 with st.expander("Click here for more details about how this model was built"):
         st.write("""This Multiclass Classification model leverages the EfficientNet-B0 Convolutional Neural Network (CNN) to convert images into grids of numbers, which it then scans to discover patterns.""") 
         st.write("""EfficientNet-B0 is a State Of The Art (SOTA) model trained on more than a million images from the ImageNet database (a large visual database designed for use in visual object recognition software research). The network can classify images into one thousand different object categories, including furniture. Woot!""")
-        st.write("""The model was trained & tested on 1,000+ images (approx. 360 for each of the 3 furniture types.""")
+        st.write("""The model was trained & tested on 1,000+ images (approx. 360 for each of the 3 furniture types).""")
 
 @st.cache
 
