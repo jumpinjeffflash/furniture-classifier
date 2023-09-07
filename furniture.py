@@ -13,7 +13,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.layers.experimental import preprocessing
 
 from PIL import Image, ImageOps
-from cv2 import cv2
+# from cv2 import cv2
 
 import pandas as pd
 import numpy as np
@@ -32,19 +32,18 @@ with st.expander("Click here for more details about how this model was built"):
 
 @st.cache(max_entries=1)
 def import_and_predict(image_data, model):
-
-        size = (256,256)
-        image = ImageOps.fit(image_data, size, Image.ANTIALIAS)
+        size = (224,224)
+        image = ImageOps.fit(image_data, size, Image.Resampling.LANCZOS)
+        image = image.convert('RGB')
         image = np.asarray(image)
-        img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-        img_resize = (cv2.resize(img, dsize=(256, 256), interpolation=cv2.INTER_CUBIC))/255.
-        
-        img_reshape = img_resize[np.newaxis,...]    
-        
+        image = (image.astype(np.float32) / 255.0)   
+                
+        img_reshape = image[np.newaxis,...]
+    
         prediction = model.predict(img_reshape)
 
-        return prediction 
-    
+        return prediction
+
 file = st.file_uploader("Please upload your picture of a chair, coffee table or dresser...", type=["png","jpg","jpeg"])
 
 if file is None:
